@@ -1,4 +1,5 @@
 require 'json'
+require "./wunderlist_client"
 
 class QuiverParser
   ITEM_PREFIX = Regexp.new(/\- \[ \]/)
@@ -6,7 +7,10 @@ class QuiverParser
   CHECKLIST_NAME = Regexp.new(/Packing Checklist/)
 
   def export
-    items = list_items
+    wl = WunderlistClient.new
+    list_items.each do |item|
+      wl.create_task(item)
+    end
   end
 
   def list_items
