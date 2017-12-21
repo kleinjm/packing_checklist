@@ -1,22 +1,42 @@
+require 'json'
+
 class QuiverParser
   ITEM_PREFIX = Regexp.new(/\- \[ \]/)
+  DIRPATH = "/Users/jklein/Dropbox/quiver.qvlibrary".freeze
+  CHECKLIST_NAME = Regexp.new(/Packing Checklist/)
 
-  def initialize(file_path:)
-    @file_path = file_path
+  def export
+    items = list_items
   end
 
-  def tasks(list_name: "all")
-    in_list = false
-    File.read(file_path).lines.each_with_object([]) do |line, res|
-      in_list = line.include?(list_name) if line.match?(/###/)
+  def list_items
+    data = JSON.parse(checklist_json)["cells"][0]["data"]
 
-      if (in_list || list_name == "all") && line =~ ITEM_PREFIX
+    res = data.lines.each_with_object([]) do |line, res|
+      if line =~ ITEM_PREFIX
         res << line.gsub("- [ ]", "").delete("\n")
       end
     end
   end
 
-  private
-
-  attr_reader :file_path
+  def checklist_json
+    Dir.foreach(DIRPATH) do |notebook|
+      next if notebook == "." || notebook == ".."
+      if notebook =~ /\.qvnotebook/
+        Dir.foreach("#{DIRPATH}/#{notebook}") do |note|
+          next if note == "." || note == ".."
+          if note =~ /\.qvnote/
+            Dir.foreach("#{DIRPATH}/#{notebook}/#{note}") do |content|
+              if content =~ /content\.json/
+                file = File.read("#{DIRPATH}/#{notebook}/#{note}/#{content}")
+                return file if file =~ CHECKLIST_NAME
+              end
+            end
+          end
+        end
+      end
+    end
+  end
 end
+
+QuiverParser.new.export
