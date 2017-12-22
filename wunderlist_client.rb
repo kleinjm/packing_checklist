@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class WunderlistClient
   require "wunderlist"
 
-  DEFAULT_LIST_NAME = "Packing".freeze
+  DEFAULT_LIST_NAME = "Packing"
 
   def initialize
     @wl = init_client
