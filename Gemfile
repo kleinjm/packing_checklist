@@ -1,3 +1,5 @@
 source "https://rubygems.org"
 
-gem "wunderlist"
+ruby "2.4.1"
+
+gem "wunderlist-api"
