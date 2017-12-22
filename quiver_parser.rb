@@ -1,4 +1,5 @@
-require 'json'
+require "json"
+require "benchmark"
 require "./wunderlist_client"
 
 class QuiverParser
@@ -6,12 +7,24 @@ class QuiverParser
   DIRPATH = "/Users/jklein/Dropbox/quiver.qvlibrary".freeze
   CHECKLIST_NAME = Regexp.new(/Packing Checklist/)
 
-  def export
-    wl = WunderlistClient.new
-    list_items.each do |item|
-      wl.create_task(item)
-    end
+  def initialize
+    @wunderlist = WunderlistClient.new
   end
+
+  def export
+    puts "Adding packing items"
+    time = Benchmark.measure do
+      list_items.first(2).each do |item|
+        print "."
+        wunderlist.create_task(item)
+      end
+    end
+    puts "\nAdded #{list_items.count} items in #{time.real.round} seconds"
+  end
+
+  private
+
+  attr_reader :wunderlist
 
   def list_items
     data = JSON.parse(checklist_json)["cells"][0]["data"]
