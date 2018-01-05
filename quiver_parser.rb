@@ -14,7 +14,7 @@ class QuiverParser
   def export
     puts "Adding packing items"
     time = Benchmark.measure do
-      list_items.first(2).each do |item|
+      list_items.each do |item|
         print "."
         wunderlist.create_task(item)
       end
