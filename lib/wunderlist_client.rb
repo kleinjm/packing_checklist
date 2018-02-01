@@ -3,15 +3,16 @@
 class WunderlistClient
   require "wunderlist"
 
-  DEFAULT_LIST_NAME = "Packing"
+  LIST_NAME = ENV.fetch("LIST_NAME") do
+    "Packing"
+  end
 
   def initialize
     @wl = init_client
   end
 
   def create_task(name)
-    list_name = ENV.fetch("LIST_NAME", DEFAULT_LIST_NAME)
-    task = @wl.new_task(list_name, title: name, completed: false)
+    task = @wl.new_task(LIST_NAME, title: name, completed: false)
     task.save
   end
 

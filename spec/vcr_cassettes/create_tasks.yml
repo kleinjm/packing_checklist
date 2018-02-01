@@ -1,0 +1,101 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://a.wunderlist.com/api/v1/lists
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Access-Token:
+      - cbd92fc07738d207453ff4917e409b8541c77bd5d90d874726de695088d9
+      X-Client-Id:
+      - cf59f8dece4c5b479ce1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 01 Feb 2018 04:06:56 GMT
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      X-Current-User-Id:
+      - '6912344'
+      X-Request-Id:
+      - 72839665-2134-47bd-922e-7169fd6baa79-8016
+      Content-Length:
+      - '1305'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":104318536,"title":"inbox","owner_type":"user","owner_id":6912344,"list_type":"inbox","public":false,"revision":17157,"created_at":"2014-03-27T09:59:28.414Z","type":"list"},{"id":165222701,"title":"Home","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":660,"created_at":"2015-06-24T20:08:52.995Z","created_by_request_id":"5541b1d86e925e2dd7e5:FAA3A9E2-85D1-4CAE-998D-2068AC24244E:CDAE2CE8-2DF2-4A84-A68D-586720F4C496:6912344:6C4B7695-98F1-470E-ABBC-91D40E173144","type":"list"},{"id":173641816,"title":"Check
+        Out","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":1700,"created_at":"2015-08-16T20:16:07.854Z","created_by_request_id":"5541b1d86e925e2dd7e5:FAA3A9E2-85D1-4CAE-998D-2068AC24244E:CDAE2CE8-2DF2-4A84-A68D-586720F4C496:6912344:88174A2D-6F9E-4041-90ED-BC2AC67F46FF","type":"list"},{"id":179602667,"title":"Food","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":3641,"created_at":"2015-08-27T17:25:26.726Z","created_by_request_id":"5541b1d86e925e2dd7e5:FAA3A9E2-85D1-4CAE-998D-2068AC24244E:CDAE2CE8-2DF2-4A84-A68D-586720F4C496:6912344:5EE3D74B-213E-40BE-9B12-FADE0F72EBE5","type":"list"},{"id":212060898,"title":"Gifts","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":284,"created_at":"2015-11-08T22:36:33.885Z","created_by_request_id":"d46c6d8d45e73a232c56:133031A4-0F03-4195-9328-6FEE4CDD77B0:24A8F9C3-9DDB-4D8A-BE2A-F24BF7A87659:6912344:9136FAAE-4FC8-4068-8FC0-018022D5DEB9","type":"list"},{"id":227654930,"title":"Travel","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":68,"created_at":"2015-12-11T01:41:34.018Z","created_by_request_id":"5541b1d86e925e2dd7e5:FAA3A9E2-85D1-4CAE-998D-2068AC24244E:CDAE2CE8-2DF2-4A84-A68D-586720F4C496:6912344:2AC79263-D8C8-49B4-9F88-CDB52ECF51FB","type":"list"},{"id":241180951,"title":"Movies
+        and Shows","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":301,"created_at":"2016-03-08T17:54:36.299Z","created_by_request_id":"5541b1d86e925e2dd7e5:FAA3A9E2-85D1-4CAE-998D-2068AC24244E:CDAE2CE8-2DF2-4A84-A68D-586720F4C496:6912344:C4562B97-4CBB-4A85-A110-5E1F8F7B67C7","type":"list"},{"id":287752836,"title":"Doximity","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":797,"created_at":"2017-01-25T06:40:32.359Z","created_by_request_id":"d46c6d8d45e73a232c56:133031A4-0F03-4195-9328-6FEE4CDD77B0:24A8F9C3-9DDB-4D8A-BE2A-F24BF7A87659:6912344:7BB7F19B-4A69-4A28-881B-9202AE73504C","type":"list"},{"id":288385952,"title":"Books
+        and Reading","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":63,"created_at":"2017-01-30T00:47:30.467Z","created_by_request_id":"d46c6d8d45e73a232c56:133031A4-0F03-4195-9328-6FEE4CDD77B0:24A8F9C3-9DDB-4D8A-BE2A-F24BF7A87659:6912344:998CE2A3-262C-43FB-AA90-051CB3402E38","type":"list"},{"id":290284378,"title":"Repeating
+        Tasks","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":2998,"created_at":"2017-02-11T18:13:06.026Z","created_by_request_id":"5541b1d86e925e2dd7e5:ACA46623-5C40-49D8-80B4-C8994F443411:166AD909-FECF-4A30-8687-117E02AEB217:6912344:44DB940D-B9D5-4B04-9364-9A113C3E554F","type":"list"},{"id":298898544,"title":"To
+        get","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":99,"created_at":"2017-04-16T00:06:51.509Z","created_by_request_id":"d46c6d8d45e73a232c56:133031A4-0F03-4195-9328-6FEE4CDD77B0:24A8F9C3-9DDB-4D8A-BE2A-F24BF7A87659:6912344:1BB497AF-E438-46C6-A00D-D7BEC6554999","type":"list"},{"id":301817766,"title":"Songs","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":86,"created_at":"2017-05-08T03:17:03.333Z","created_by_request_id":"5541b1d86e925e2dd7e5:ACA46623-5C40-49D8-80B4-C8994F443411:166AD909-FECF-4A30-8687-117E02AEB217:6912344:75219478-8758-4EF5-985C-A6AD5773884F","type":"list"},{"id":303728985,"title":"Airbnb","owner_type":"user","owner_id":21052531,"list_type":"list","public":false,"revision":397,"created_at":"2017-05-23T03:06:27.842Z","created_by_request_id":"d46c6d8d45e73a232c56:FD4E3AAA-D8E2-49B3-96D4-716F6E90C3C4:2DB69AD8-8BC8-4C9E-82AE-34CDF2F0562D:21052531:7850A409-02B7-4B6E-BA46-5BB71AFF2C93","type":"list"},{"id":315499934,"title":"VA","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":133,"created_at":"2017-08-23T18:35:11.566Z","created_by_request_id":"5541b1d86e925e2dd7e5:ACA46623-5C40-49D8-80B4-C8994F443411:166AD909-FECF-4A30-8687-117E02AEB217:6912344:4CC09122-5200-443B-9A2C-01C7C0DCEC17","type":"list"},{"id":331848291,"title":"Packing","owner_type":"user","owner_id":6912344,"list_type":"list","public":false,"revision":650,"created_at":"2017-12-21T22:42:11.073Z","created_by_request_id":"5541b1d86e925e2dd7e5:ACA46623-5C40-49D8-80B4-C8994F443411:166AD909-FECF-4A30-8687-117E02AEB217:6912344:4488AF70-194F-4473-8D71-E2D15696650A","type":"list"},{"id":334508874,"title":"Cvs","owner_type":"user","owner_id":21052531,"list_type":"list","public":false,"revision":12,"created_at":"2018-01-10T13:31:19.690Z","created_by_request_id":"d46c6d8d45e73a232c56:FD4E3AAA-D8E2-49B3-96D4-716F6E90C3C4:2DB69AD8-8BC8-4C9E-82AE-34CDF2F0562D:21052531:BD3BA5AD-7218-4C42-B47B-5FC4EA66DAB7","type":"list"}]'
+    http_version: 
+  recorded_at: Thu, 01 Feb 2018 04:06:56 GMT
+- request:
+    method: post
+    uri: https://a.wunderlist.com/api/v1/tasks
+    body:
+      encoding: UTF-8
+      string: '{"id":null,"list_id":331848291,"title":" Glasses","revision":null,"assignee_id":null,"created_at":null,"completed":false,"completed_at":null,"completed_by_id":null,"recurrence_type":null,"recurrence_count":null,"due_date":null,"starred":null}'
+    headers:
+      X-Access-Token:
+      - cbd92fc07738d207453ff4917e409b8541c77bd5d90d874726de695088d9
+      X-Client-Id:
+      - cf59f8dece4c5b479ce1
+      Content-Type:
+      - application/json
+      Content-Encoding:
+      - UTF-8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 01 Feb 2018 04:06:57 GMT
+      Server:
+      - nginx
+      X-Current-User-Id:
+      - '6912344'
+      X-Request-Id:
+      - a3c3f504-ebbd-4203-a2d5-c60bcd4328e7-8017
+      Content-Length:
+      - '181'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":3533036915,"created_at":"2018-02-01T04:06:57.175Z","created_by_id":6912344,"completed":false,"starred":false,"list_id":331848291,"revision":1,"title":"
+        Glasses","type":"task"}'
+    http_version: 
+  recorded_at: Thu, 01 Feb 2018 04:06:57 GMT
+recorded_with: VCR 4.0.0

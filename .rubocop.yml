@@ -1,3 +1,6 @@
 inherit_gem:
   jcop:
     - .rubocop.yml
+
+Rails/Output:
+  Enabled: false
