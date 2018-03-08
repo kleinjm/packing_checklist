@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
-source "https://w2EZTrmCr68MpW2nKdsq@gem.fury.io/kleinjm/"
+# TODO: pull token from env var
+source "https://<gem_fury_token>@gem.fury.io/kleinjm/"
 
 ruby "2.5.0"
 

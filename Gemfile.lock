@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://w2EZTrmCr68MpW2nKdsq@gem.fury.io/kleinjm/
   specs:
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
