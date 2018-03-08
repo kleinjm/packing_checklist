@@ -1,6 +1,6 @@
 ### Packing Checklist
 
-A quick and dirty way to export from Quiver to Wunderlist
+A quick and easy way to export from Quiver to Wunderlist
 
 ### Installation
 ```
