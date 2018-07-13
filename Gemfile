@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
-# TODO: pull token from env var
-source "https://<gem_fury_token>@gem.fury.io/kleinjm/"
 
 ruby "2.5.0"
 
-gem "jcop", "0.2.0"
-gem "wunderlist-api"
+gem "jcop", "0.2.3", git: "https://github.com/kleinjm/jcop.git"
+gem "wunderlist-api", "1.2.0", git: "https://github.com/kleinjm/wunderlist-api.git"
 
 group :development, :test do
   gem "pry"
