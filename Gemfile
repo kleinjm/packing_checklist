@@ -5,7 +5,7 @@ source "https://rubygems.org"
 ruby "2.5.0"
 
 gem "jcop", "0.2.3", git: "https://github.com/kleinjm/jcop.git"
-gem "wunderlist-api", "1.2.0", git: "https://github.com/kleinjm/wunderlist-api.git"
+gem "wunderlist-api", "1.3.0", git: "https://github.com/kleinjm/wunderlist-api.git"
 
 group :development, :test do
   gem "pry"

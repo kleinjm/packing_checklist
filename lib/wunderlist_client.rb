@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class WunderlistClient
-  require "wunderlist"
+require "wunderlist"
 
+class WunderlistClient
   LIST_NAME = ENV.fetch("LIST_NAME") do
     "Packing"
   end
