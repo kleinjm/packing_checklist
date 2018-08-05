@@ -1,80 +1,91 @@
 # frozen_string_literal: true
 
-require "json"
 require "benchmark"
 require_relative "../lib/wunderlist_client"
+require_relative "./note_parser"
 
 class QuiverParser
   ITEM_PREFIX = ENV.fetch("ITEM_PREFIX") do
     Regexp.new(/\- \[ \]/)
   end
-  DIRPATH = ENV.fetch("NOTEBOOK_DIR") do
-    "/Users/jklein/Dropbox/quiver.qvlibrary"
+  TITLE_PREFEX = ENV.fetch("TITLE_PREFEX") do
+    Regexp.new(/### /)
   end
-  CHECKLIST_NAME = ENV.fetch("CHECKLIST_NAME") do
-    Regexp.new(/Packing Checklist/)
-  end
-  CONTENT_FILENAME = Regexp.new(/content\.json/)
-  NOTEBOOK_EXT = Regexp.new(/\.qvnotebook/)
-  NOTE_EXT = Regexp.new(/\.qvnote/)
 
   def initialize
     @wunderlist = WunderlistClient.new
+    @items_added_count = 0
   end
 
   def export
-    puts "Adding packing items"
-    time = Benchmark.measure do
-      list_items.each do |item|
-        print "."
-        wunderlist.create_task(item)
-      end
-    end
-    puts "\nAdded #{list_items.count} items in #{time.real.round} seconds"
+    print_lists_with_indexes
+    receive_indexes_input
+
+    time = Benchmark.measure { add_packing_items }
+    print_success_message(time: time.real.round)
   end
 
   private
 
-  attr_reader :wunderlist
+  attr_reader :wunderlist, :list_indexes
+  attr_accessor :items_added_count
+
+  def add_packing_items
+    puts "Adding packing items"
+    add_items_for_list(index: 0) # Vital
+    list_indexes.each { |index| add_items_for_list(index: index) }
+  end
+
+  def add_items_for_list(index:)
+    list_items.values[index].each do |item|
+      print "."
+      wunderlist.create_task(item)
+      @items_added_count += 1
+    end
+  end
+
+  def receive_indexes_input
+    puts <<~HEREDOC
+      Which checklists would you like to include?
+      Vital items are automatically included.
+      Leave blank to only add vital items.
+      Type 'exit' to quit.
+      Please comma delimit list numbers. Ie. 1,3,5
+    HEREDOC
+    input = gets
+    exit if input.match? "exit" # rubocop:disable Rails/Exit
+    @list_indexes = input.delete("\n").split(",").map(&:to_i)
+  end
+
+  def print_lists_with_indexes
+    list_items.each_with_index do |(list_name, items), i|
+      next if i.zero? # Vital is always included
+      puts "#{i} - #{list_name} (#{items.size} items)"
+    end
+  end
 
   def list_items
-    data = JSON.parse(checklist_json)["cells"][0]["data"]
-
-    data.lines.each_with_object([]) do |line, res|
-      res << line.gsub(ITEM_PREFIX, "").delete("\n") if line.match? ITEM_PREFIX
-    end
+    return @list_items if defined?(@list_items)
+    @list_items = build_list_items_hash
   end
 
-  def checklist_json
-    find_notebook(directory: DIRPATH)
-  end
-
-  def find_notebook(directory:)
-    Dir.foreach(directory) do |notebook|
-      next if %w[. ..].include? notebook
-      if notebook.match? NOTEBOOK_EXT
-        note = find_note(directory: "#{directory}/#{notebook}")
-        return note if note
+  # rubocop:disable Metrics/MethodLength
+  def build_list_items_hash
+    title = ""
+    NoteParser.new.note_lines.each_with_object({}) do |line, res|
+      if line.match? TITLE_PREFEX
+        title = line.gsub(TITLE_PREFEX, "").delete("\n").strip
+        res[title] = []
+        next
+      end
+      if line.match? ITEM_PREFIX
+        res[title] << line.gsub(ITEM_PREFIX, "").delete("\n").strip
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
-  def find_note(directory:)
-    Dir.foreach(directory) do |note|
-      next if %w[. ..].include? note
-      if note.match? NOTE_EXT
-        file = find_file(directory: "#{directory}/#{note}")
-        return file if file
-      end
-    end
-  end
-
-  def find_file(directory:)
-    Dir.foreach(directory) do |content|
-      if content.match? CONTENT_FILENAME
-        file = File.read("#{directory}/#{content}")
-        return file if file.match? CHECKLIST_NAME
-      end
-    end
+  def print_success_message(time:)
+    puts "\nAdded #{items_added_count} items in #{time} seconds"
   end
 end

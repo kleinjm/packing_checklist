@@ -13,7 +13,7 @@ RSpec.describe "QuiverParser" do
         with_modified_env(
           WL_ACCESS_TOKEN: "test",
           WL_CLIENT_ID: "test",
-          NOTEBOOK_DIR: "./spec/support/files/quiver.qvlibrary",
+          NOTEBOOK_DIR: "./spec/support/files/quiver.qvlibrary"
         ) do
           require "./app/quiver_parser"
           QuiverParser.new.export
