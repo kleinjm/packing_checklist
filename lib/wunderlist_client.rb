@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "bundler/setup"
 require "wunderlist"
 
 class WunderlistClient
@@ -19,7 +20,7 @@ class WunderlistClient
   def init_client
     Wunderlist::API.new(
       access_token: ENV.fetch("WL_ACCESS_TOKEN"),
-      client_id: ENV.fetch("WL_CLIENT_ID"),
+      client_id: ENV.fetch("WL_CLIENT_ID")
     )
   end
 end
