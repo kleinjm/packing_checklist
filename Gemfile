@@ -4,6 +4,7 @@ source "https://rubygems.org"
 
 ruby "2.5.0"
 
+gem "activesupport"
 gem "jcop", "0.2.3", git: "https://github.com/kleinjm/jcop.git"
 gem "wunderlist-api", "1.3.0", git: "https://github.com/kleinjm/wunderlist-api.git"
 

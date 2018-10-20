@@ -87,6 +87,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   climate_control
   jcop (= 0.2.3)!
   pry

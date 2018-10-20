@@ -2,18 +2,24 @@
 
 require "bundler/setup"
 require "wunderlist"
+require "active_support/core_ext/numeric/time"
 
 class WunderlistClient
   LIST_NAME = ENV.fetch("LIST_NAME") do
     "Packing"
-  end
+  end.freeze
 
   def initialize
     @wl = init_client
   end
 
   def create_task(name)
-    task = @wl.new_task(LIST_NAME, title: name, completed: false)
+    task = @wl.new_task(
+      LIST_NAME,
+      title: name,
+      completed: false,
+      due_date: Time.current.to_date
+    )
     task.save
   end
 
